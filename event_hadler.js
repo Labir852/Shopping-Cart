@@ -2,7 +2,14 @@ const btnMinus = document.getElementById("btnMinus");
 btnMinus.addEventListener('click',function()
 {   
     const Unit = decreaseAmount("mobileAmount");
+    if (Unit <= 0)
+{
+    document.getElementById("btnMinus").disabled = true;
+}
+
    balanceMobile("mobilePrice",Unit);
+
+
 
    const subTotal = document.getElementById("subTotal").innerText;
 const subTotalNumber = parseFloat(subTotal);
@@ -19,6 +26,7 @@ const btnPlus = document.getElementById("btnPlus");
 btnPlus.addEventListener('click',function()
 {   
      const Unit = increaseAmount("mobileAmount");
+     document.getElementById("btnMinus").disabled = false;
      balanceMobile("mobilePrice",Unit);
 
      const subTotal = document.getElementById("subTotal").innerText;
@@ -36,6 +44,11 @@ const btnMinusCasing = document.getElementById("btnMinusCasing");
 btnMinusCasing.addEventListener('click',function()
 {   
 const Unit = decreaseAmount("casingAmount");
+if (Unit <= 0)
+{
+    document.getElementById("btnMinusCasing").disabled = true;
+}
+
 balanceCasing("casingPrice",Unit);
 
 const subTotal = document.getElementById("subTotal").innerText;
@@ -53,6 +66,7 @@ const btnPlusCasing = document.getElementById("btnPlusCasing");
 btnPlusCasing.addEventListener('click',function()
        {   
             const Unit = increaseAmount("casingAmount");
+            document.getElementById("btnMinusCasing").disabled = false;
             balanceCasing("casingPrice",Unit);
 
             const subTotal = document.getElementById("subTotal").innerText;
@@ -64,6 +78,12 @@ btnPlusCasing.addEventListener('click',function()
             TotalAmount();
 
        })
+
+       document.getElementById("check-out").addEventListener('click',function()
+       {
+        alert("This Website was made for testing Purpose");
+       })
+       
 
 
 function decreaseAmount(id)
